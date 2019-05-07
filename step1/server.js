@@ -12,10 +12,11 @@ function staticRoot(staticPath, req, res){
     }
 
     var filePath = path.join(staticPath, pathObj.pathname)
-
+    // 不健壮使用异步
     // var fileCintent = fs.readFileSync(filePath, 'binary')//二进制读取同步文件
     // res.write(fileCintent, 'binary')
     // res.end()
+    // 异步
     fs.readFile(filePath, 'binary', function(err, fileCintent){
       if(err){
         console.log('404')

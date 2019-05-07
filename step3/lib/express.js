@@ -31,6 +31,18 @@ function express() {
     next()
   }
   app.use = function(routePath, middleWare){
+    /* 
+      app.use(fn)
+      {
+        routePath: null,
+        middleWare: fn
+      }
+      app.use('/a',fn)
+      {
+        routePath: '/a',
+        middleWare: fn
+      }
+    */
       if(typeof routePath ==='function') {
         middleWare = routePath,
         routePath = null

@@ -7,7 +7,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var mimeType = require('./lib/mime')
 
 var app = express()
-
+// 自己写的简单，无法处理json和多媒体格式的body
 app.use(urlencodedParser)
 app.use(mimeType)
 app.use(express.static(path.join(__dirname, 'static')))

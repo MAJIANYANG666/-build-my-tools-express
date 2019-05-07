@@ -51,7 +51,7 @@ express.static = function(staticPath){
 
   return function(req, res, next){
     var pathObj = url.parse(req.url, true)
-    var filePath = path.resolve(staticPath, pathObj.pathname.substr(1))
+    var filePath = path.join(staticPath, pathObj.pathname)
     console.log(filePath)
     fs.readFile(filePath,'binary', function(err, content){
       if(err){

@@ -117,3 +117,28 @@ function addRender(req, res, app) {
     })
   }
 }
+
+/* 
+app.use(path,callback)中的callback既可以是router对象又可以是函数
+
+app.get(path,callback)中的callback只能是函数
+
+其实，可以将app.get()看作app.use的特定请求(get)的简要写法。即
+
+var express = require('express');
+var app = express();
+app.get('/hello',function(req,res,next){
+    res.send('hello test2');
+ 
+});
+等同于：
+
+var express = require('express');
+var app = express();
+var router = express.Router();
+ 
+router.get('/', function(req, res, next) {
+  res.send('hello world!');
+});
+app.use('/hello',router);
+ */

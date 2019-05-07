@@ -1,6 +1,7 @@
 
 var http = require('http')
 var server = http.createServer(function(request, response){
+  // 白屏测试
     setTimeout(function(){
       response.setHeader('Content-Type','text/html')
       response.writeHead(404,'Not Found')

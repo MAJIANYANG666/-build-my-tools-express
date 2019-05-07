@@ -38,10 +38,12 @@ function routePath(req,res){
   var pathObj = url.parse(req.url, true)
   var handleFn = routers[pathObj.pathname]
   if(handleFn){
-    //get请求
+    //get请求，数据放在url里面
     req.query = pathObj.query
+    //post请求,数据放在body里面
     //post请求,监听d到ata的时候会执行回调，将数据加给body，后面同理
     var body = ''
+    // req的on api
     req.on('data', function(chunk){
       body +=chunk
     }).on('end',function(){
@@ -75,6 +77,9 @@ function staticRoot(staticPath, req, res){
 function parseBody(body){
   console.log(body)
   var obj = {}
+  // body
+  // username=aaa&password=bbb
+  //split &再split =
   body.split('&').forEach(function(str){
     obj[str.split('=')[0]] = str.split('=')[1]
   })
